@@ -51,8 +51,13 @@ namespace reflect {
 /* COMPILER                                                                   */
 /******************************************************************************/
 
-#define reflectUnused __attribute__((unused))
-#define reflectUnreachable() __builtin_unreachable()
+#ifdef _GNUC
+  #define reflectUnused __attribute__((unused))
+  #define reflectUnreachable() __builtin_unreachable()
+#else
+  #define reflectUnused
+  #define reflectUnreachable()
+#endif
 
 
 } // reflect

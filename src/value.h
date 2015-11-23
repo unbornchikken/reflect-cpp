@@ -135,12 +135,16 @@ struct Value
     reflectValueOpBinary(operator^=)
     reflectValueOpBinary(operator<<=)
     reflectValueOpBinary(operator>>=)
-
     reflectValueOpUnary (operator++)
-    reflectValueOpBinary(operator++)
+    Value operator++(int foo) const
+    {
+        return call<Value>("operator++", 0);
+    }
     reflectValueOpUnary (operator--)
-    reflectValueOpBinary(operator--)
-
+    Value operator--(int foo) const
+    {
+        return call<Value>("operator--", 0);
+    }
     reflectValueOpBinary(operator+)
     reflectValueOpBinary(operator-)
     reflectValueOpBinary(operator*)
